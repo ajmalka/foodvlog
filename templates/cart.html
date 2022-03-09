@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+  <head>
+    <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="{% static 'cr/fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cr/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'cr/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'cr/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'cr/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'cr/css/owl.theme.default.min.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'cr/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cr/css/style.css' %}">
+
+  </head>
+  <body>
+
+  <div class="site-wrap">
+    <header class="site-navbar" role="banner">
+      <div class="site-navbar-top">
+        <div class="container">
+          <div class="row align-items-center">
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </header>
+
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <form class="col-md-12" method="post">
+            <div class="site-blocks-table">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="product-thumbnail" style="color:white">Image</th>
+                    <th class="product-name" style="color:white">Product</th>
+                    <th class="product-name" style="color:white">ID</th>
+                    <th class="product-price" style="color:white">Price</th>
+                    <th class="product-quantity" style="color:white">Quantity</th>
+                    <th class="product-total" style="color:white">Total</th>
+                    <th class="product-remove" style="color:white">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ------------------------
+                  {% for i in ci %}
+                  <tr>
+                    <td class="product-thumbnail">
+                     <a href="{{i.prodt.get_url}}"><img src="{{i.prodt.img.url}}" alt="{{i.prodt.name}}" class="img-fluid"></a>
+                    </td>
+                    <td class="product-name">
+                      <h2 class="h5 text-black">{{i.prodt.name}}</h2>
+                    </td>
+                     <td>{{i.prodt.id}}</td>
+                    <td>₹{{i.prodt.price}} x 1</td>
+                    <td><a href="{% url 'cart_decrement' i.prodt.id %}">
+                      <button class="btn btn-outline-primary" type="button"> - </button></a>
+                      {{i.quan}}
+                      <a href="{% url 'addcart' i.prodt.id %}">
+                        <button class="btn btn-outline-primary" type="button"> + </button></a></td>
+<!--                      <div class="input-group mb-3" style="max-width: 120px;">-->
+<!--                        <div class="input-group-prepend">-->
+<!--                          <button class="btn btn-outline-primary js-btn-minus" type="button"><a href="{% url 'cart_decrement' i.prodt.id %}">-</a></button>-->
+<!--                        </div>-->
+<!--                        <input type="text" class="form-control text-center" value="{{i.quan}}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">-->
+<!--                        <div class="input-group-append">-->
+<!--                          <button class="btn btn-outline-primary js-btn-plus" type="button"><a href="{% url 'addcart' i.prodt.id %}">+</a></button>-->
+<!--                        </div>-->
+<!--                      </div>-->
+
+
+                    <td>₹{{i.total}}</td>
+                    <td><a href="{% url 'remove' i.prodt.id %}" class="btn btn-primary btn-sm"> X </a></td>
+                  </tr>
+                  {% endfor %}
+                  ----------------------
+                   <div>
+                  <td> <span class="product-total" style="color:black;"><b>Total : ₹{{t}} </b></span></td>
+                     </div>
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+
+
+
+
+
+  <script src="{% static 'cr/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'cr/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'cr/js/popper.min.js' %}"></script>
+  <script src="{% static 'cr/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'cr/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'cr/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'cr/js/aos.js' %}"></script>
+
+  <script src="{% static 'cr/js/main.js' %}"></script>
+
+  </body>
+</html>
+{% endblock %}

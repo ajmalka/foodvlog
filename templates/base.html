@@ -1,0 +1,46 @@
+{% load static %}
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>Avodha Shopping</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+<!--<div class="bgded overlay" style="background-image:url('{% static 'hm/images/demo/backgrounds/bg.jpg' %}');">-->
+  <!-- ################################################################################################ -->
+
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <!-- ################################################################################################ -->
+        <h1><a href="/">AVODHA SHOPPING</a></h1>
+        <!-- ################################################################################################ -->
+      </div>
+      <nav id="mainav" class="fl_right">
+        <!-- ################################################################################################ -->
+        <ul class="clear">
+          <li class="active"><a href="/">HOME</a></li>
+          <li><a class="active" href="{% url 'cartDetails' %}"><i class="fa fa-shopping-cart" style="font-size:14px"></i>{{itc}}</a></li>
+         {% if user.is_authenticated %}
+            <li><a class="active" href="">Hello {{user.username}}</a></li>
+            <li><a class="active" href="{% url 'logout' %}">LOGOUT</a></li>
+            {% else %}
+            <li><a class="active" href="{% url 'login' %}">LOGIN</a></li>
+            <li><a class="active" href="{% url 'register' %}">REGISTER</a></li>
+          {% endif %}
+
+
+
+
+        </ul>
+        <!-- ################################################################################################ -->
+      </nav>
+    </header>
+  </div>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+</html>
